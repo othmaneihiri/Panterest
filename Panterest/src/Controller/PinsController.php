@@ -5,6 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Repository\PinRepository;
 use App\Entity\Pin;
 
@@ -34,5 +35,18 @@ class PinsController extends AbstractController
         return $this->render('pins/show.html.twig', compact('pin'));
 
      }
+
+     /**
+     * @Route("/pins/create", name="app_pins_create")
+     * 
+     */
+   /* public function create(): Response
+    {
+
+        return $this->render('pins/create.html.twig');
+    }*/
+
+     
+     
 
 }
