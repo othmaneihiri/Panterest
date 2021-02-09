@@ -6,10 +6,12 @@
 
 <article>
 
-<h1>{{pin.title}}</h1>
-
+<h1>{{pin.title}}</h1><br>
+{{pin.description}}<br>
 </article>
-
+<br>
+<a href="{{ path('app_pins_edit', {id:pin.id}) }}">Edit</a> | 
 <a href="{{ path('app_home') }}">Go Back</a>
+
 
 {% endblock %}
