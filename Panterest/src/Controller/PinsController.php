@@ -6,13 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormTypeInterface;
+use Symfony\Component\Form\Exception;
+//use OC\PlatformBundle\Form\PinType;
 
 
-
+use App\Form\PinType;
 use App\Repository\PinRepository;
 use App\Entity\Pin;
 
@@ -38,11 +40,7 @@ class PinsController extends AbstractController
     {
         $pin = new Pin;
 
-        $form = $this->createFormBuilder($pin)
-            ->add('title', TextType::class)
-            ->add('description', TextareaType::class)
-            ->getForm()
-            ;
+        $form = $this->createForm(PinType::class, $pin);
 
         $form->handleRequest($request);
 
@@ -74,18 +72,16 @@ class PinsController extends AbstractController
 
      /**
      * 
-     * @Route("/pins/{id<[0-9]+>}/edit", name="app_pins_edit", methods={"GET","POST"})
+     * @Route("/pins/{id<[0-9]+>}/edit", name="app_pins_edit", methods={"GET","PUT"})
      * 
      */
 
     public function edit(Request $request, Pin $pin, EntityManagerInterface $em): Response
     {
 
-        $form = $this->createFormBuilder($pin)
-        ->add('title', TextType::class)
-        ->add('description', TextareaType::class)
-        ->getForm()
-        ;
+        $form = $this->createForm(PinType::class, $pin, [
+            'method' => 'PUT'
+        ]);
 
         $form->handleRequest($request);
 
