@@ -4,14 +4,19 @@
 
 {% block body %}
 
+<div class="row">
+
+<div class="col-md-6 mx-auto">
+
 <h1>Create Pin</h1>
 
-{{ form_start(form) }}
+{{ include('pins/_form.html.twig', {'submitButtonText': 'Create Pin'}) }}
 
-{{ form_widget(form) }}
+</div>
+
+</div>
 
 
-<input type="submit" value="Create Pin" formnovalidate>
 
-{{ form_end(form) }}
+
 {% endblock %}
