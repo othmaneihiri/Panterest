@@ -75,3 +75,11 @@ Dans le twig :
 
 
 13- Creer un form : symfony console make:form
+
+14- Ajuster les assets : composer req encore
+
+15- Compile les assets : yarn encore dev --watch
+
+16- Ajouter l' bootstrap : yarn add bootstrap --dev
+
+17- Ajouter l' Jquery : yarn add jquery popper.js
