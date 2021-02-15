@@ -83,3 +83,68 @@ Dans le twig :
 16- Ajouter l' bootstrap : yarn add bootstrap --dev
 
 17- Ajouter l' Jquery : yarn add jquery popper.js
+
+
+18- Ajouter un champs dans une entité existant :
+PS C:\Users\ihiri\Documents\Panterest\Panterest> symfony console make:entity Pin
+
+ Your entity already exists! So let's add some new fields!
+
+ New property name (press <return> to stop adding fields):
+ > imageName
+
+ Field type (enter ? to see all types) [string]:
+ >
+
+ Field length [255]:
+ >
+
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ > yes
+
+ updated: src/Entity/Pin.php
+
+ Add another property? Enter the property name (or press <return> to stop adding fields):
+ >
+
+
+
+  Success!
+
+
+ Next: When you're ready, create a migration with php bin/console make:migration
+
+PS C:\Users\ihiri\Documents\Panterest\Panterest> symfony console make:migration
+
+ [WARNING] You have 1 previously executed migrations in the database that are not registered migrations.
+
+ Are you sure you wish to continue? (yes/no) [yes]:
+ >
+
+
+
+  Success!
+
+
+ Next: Review the new migration "migrations/Version20210215120846.php"
+ Then: Run the migration with php bin/console doctrine:migrations:migrate
+ See https://symfony.com/doc/current/bundles/DoctrineMigrationsBundle/index.html
+PS C:\Users\ihiri\Documents\Panterest\Panterest> symfony console doctrine:migrations:migrate
+
+ WARNING! You are about to execute a migration in database "panterest" that could result in schema changes and data loss. Are you sure you wish to continue? (yes/no) [yes]:
+ > yes
+
+ [WARNING] You have 1 previously executed migrations in the database that are not registered migrations.
+
+ >> 2021-02-06 18:57:42 (DoctrineMigrations\Version20210206175429)
+
+ Are you sure you wish to continue? (yes/no) [yes]:
+ > yes
+
+[notice] Migrating up to DoctrineMigrations\Version20210215120846
+[notice] finished in 7267.1ms, used 20M memory, 1 migrations executed, 1 sql queries
+
+PS C:\Users\ihiri\Documents\Panterest\Panterest>
+
+
+19- Ajouter des images a la base de donnée : composer require vich/uploader-bundle
