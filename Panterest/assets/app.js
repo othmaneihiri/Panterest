@@ -12,3 +12,10 @@ import './scss/app.scss';
 import './bootstrap';
 
 import $ from 'jquery';
+
+$('#pin_imageFile_file').on('change', function(){
+
+    alert('Chargement');
+    
+
+});
